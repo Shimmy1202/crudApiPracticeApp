@@ -101,7 +101,7 @@ export default {
       this.error = "";
       try {
         if (this.editingId) {
-          await axios.put(`/api/memos/${this.editingId}`, this.form);
+          await axios.post(`/api/memos/${this.editingId}`, this.form);
         } else {
           await axios.post("/api/memos", this.form);
         }

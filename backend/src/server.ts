@@ -46,17 +46,17 @@ function validateBody(
 }
 
 // APIエンドポイント
-// メモ一覧の取得
+// メモ一覧取得API
 router.get("/memos", (_req: Request, res: Response) => {
   try {
     const memos = selectAllMemos.all() as Memo[];
     res.json(memos);
   } catch (error) {
-    res.status(500).json({ message: "メモの取得に失敗しました。" });
+    res.status(500).json({ message: "メモ情報の取得に失敗しました。" });
   }
 });
 
-// メモ情報の取得
+// メモ単体取得API
 router.get("/memos/:id", (req: Request, res: Response) => {
   const id = parseId(req);
   if (!id) {
@@ -70,11 +70,11 @@ router.get("/memos/:id", (req: Request, res: Response) => {
     }
     res.json(memo);
   } catch (error) {
-    res.status(500).json({ message: "メモの取得に失敗しました。" });
+    res.status(500).json({ message: "メモ情報の取得に失敗しました。" });
   }
 });
 
-// メモの作成
+// メモ作成API
 router.post("/memos", (req: Request, res: Response) => {
   const body = validateBody(req);
   if (!body) {
@@ -93,8 +93,8 @@ router.post("/memos", (req: Request, res: Response) => {
   }
 });
 
-// メモの更新
-router.put("/memos/:id", (req: Request, res: Response) => {
+// メモ更新API
+router.post("/memos/:id", (req: Request, res: Response) => {
   const id = parseId(req);
   if (!id) {
     return res.status(400).json({ message: "不正なIDです。" });
@@ -122,7 +122,7 @@ router.put("/memos/:id", (req: Request, res: Response) => {
   }
 });
 
-// メモの削除
+// メモ削除API
 router.delete("/memos/:id", (req: Request, res: Response) => {
   const id = parseId(req);
   if (!id) {
