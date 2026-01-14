@@ -47,15 +47,17 @@
 <script>
 import axios from "axios";
 
+const createEmptyForm = () => ({
+  title: "",
+  content: "",
+});
+
 export default {
   name: "App",
   data() {
     return {
       memos: [],
-      form: {
-        title: "",
-        content: "",
-      },
+      form: createEmptyForm(),
       editingId: null,
       loading: false,
       error: "",
@@ -87,10 +89,7 @@ export default {
     },
     resetForm() {
       this.editingId = null;
-      this.form = {
-        title: "",
-        content: "",
-      };
+      this.form = createEmptyForm();
       this.error = "";
     },
     async submitMemo() {
