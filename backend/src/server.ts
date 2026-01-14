@@ -45,6 +45,8 @@ function validateBody(
   return { title, content };
 }
 
+// APIエンドポイント
+// メモ一覧の取得
 router.get("/memos", (_req: Request, res: Response) => {
   try {
     const memos = selectAllMemos.all() as Memo[];
@@ -54,6 +56,7 @@ router.get("/memos", (_req: Request, res: Response) => {
   }
 });
 
+// メモ情報の取得
 router.get("/memos/:id", (req: Request, res: Response) => {
   const id = parseId(req);
   if (!id) {
@@ -71,6 +74,7 @@ router.get("/memos/:id", (req: Request, res: Response) => {
   }
 });
 
+// メモの作成
 router.post("/memos", (req: Request, res: Response) => {
   const body = validateBody(req);
   if (!body) {
@@ -89,6 +93,7 @@ router.post("/memos", (req: Request, res: Response) => {
   }
 });
 
+// メモの更新
 router.put("/memos/:id", (req: Request, res: Response) => {
   const id = parseId(req);
   if (!id) {
@@ -117,6 +122,7 @@ router.put("/memos/:id", (req: Request, res: Response) => {
   }
 });
 
+// メモの削除
 router.delete("/memos/:id", (req: Request, res: Response) => {
   const id = parseId(req);
   if (!id) {
@@ -138,6 +144,7 @@ router.delete("/memos/:id", (req: Request, res: Response) => {
 
 app.use("/api", router);
 
+// サーバー起動
 app.listen(port, () => {
-  console.log(`Backend listening on port ${port}`);
+  console.log(`バックエンドはポート${port}で起動しています。`);
 });
