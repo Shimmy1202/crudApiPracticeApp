@@ -34,7 +34,7 @@ npm run serve
 - PUT `/api/memos/:id`
 - DELETE `/api/memos/:id`
 
-POST/PUT のリクエストボディ：
+POSTのリクエストボディ：
 ```json
 { "title": "例", "content": "本文" }
 ```
