@@ -14,7 +14,6 @@ const port = 3000;
 
 app.use(express.json());
 
-// API routes are mounted under /api.
 const router = express.Router();
 
 const selectAllMemos = db.prepare(
