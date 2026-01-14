@@ -3,16 +3,27 @@
 バックエンド学習を目的にした、最小構成のメモCRUDアプリです。
 
 ## 構成
-- nginx（リバースプロキシ）
-- frontend：Vue CLI dev server + Axios
-- backend：Node.js + Express + TypeScript + SQLite（better-sqlite3）
+- frontend：Vue CLI dev server + Axios（ローカル起動）
+- backend：Node.js + Express + TypeScript + SQLite（better-sqlite3、Docker起動）
 
 ## 起動方法
+1) バックエンドを起動
 ```bash
-docker compose up --build
+docker compose up --build backend
 ```
 
-起動後に http://localhost にアクセスしてください。
+2) フロントエンドを起動
+```bash
+cd frontend
+npm install
+```
+
+移行はルートから:
+```bash
+npm run serve
+```
+
+起動後に http://localhost:8080 にアクセスしてください。
 
 ## API
 ベースパス：`/api`
